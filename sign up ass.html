@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: rgb(10,126,174);
+    }
+    .all{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(https://i1.wp.com/static.web-backgrounds.net/uploads/2012/08/City_Landscape_Background.jpg);
+        backdrop-filter: 5px;
+        width: 50%;
+        height: 55vh;
+        margin: 100px auto;
+        box-shadow:  1px 1px 3px 3px color-mix(in srgb, #525685 70%, white 30%);
+        border-radius: 10px;
+        background-blend-mode: darken;
+        border-color: #525685;
+        display: flex;
+        justify-content: center;
+        gap: 35px;
+        transition: all 1s linear;
+        box-shadow: inset 0 0 0 0 rgb(9,11,26);
+
+    }
+    .all:hover{
+        box-shadow: inset 360px 0 0 0  rgb(9,11,26);
+
+         
+    }
+    .line-1{
+        width: 45%;
+        margin-top: 45px;
+    }
+    .line-2{
+        height: 30vh;
+        width: 40%;
+        border: 1px solid black;
+        margin-top: 100px;
+        text-align: center;
+    }
+    #input1{
+        width: 98%;
+        height: 35px;
+        margin-top: 12px;
+        border-radius: 20px;
+        border: none;
+        outline: rgb(9,11,26);
+        padding-left: 15px;
+        box-shadow: 2px 2px 3px 1px #525685;
+        transition: 0.1s ease-out;
+        background-color: rgb(241,243,255);
+    }
+    #input1:hover{
+      transform: translate(-10px);
+      box-shadow: 1px 1px 2px 2px #525685;
+    }
+    #input2{
+        width: 98%;
+        height: 35px;
+        margin-top: 12px;
+        border-radius: 20px;
+        border: none;
+        outline: rgb(9,11,26);
+        padding-left: 15px;
+        box-shadow: 2px 2px 2px 1px #525685;
+        transition: 0.1s ease-in-out;
+        background-color: rgb(241,243,255);
+        
+
+    }
+    #input2:hover{
+        transform: translate(10px);
+      box-shadow: 1px 1px 2px 2px #525685;
+      
+      
+    }
+    #password{
+        width: 98%;
+        height: 35px;
+        margin-top: 12px;
+        border-radius: 20px;
+        border: none;
+        outline: rgb(9,11,26);
+        padding-left: 15px;
+        box-shadow: 2px 2px 3px 1px #525685;
+        transition: 0.1s ease;
+        background-color: rgb(241,243,255);
+
+    }
+    #password:hover{
+        transform: translate(-10px);
+      box-shadow: 1px 1px 2px 2px #525685;
+    }
+    #confirmpassword{
+        width: 98%;
+        height: 35px;
+        margin-top: 12px;
+        border-radius: 20px;
+        border: none;
+        outline: rgb(9,11,26);
+        padding-left: 15px;
+        box-shadow: 2px 2px 3px 1px #525685;
+        transition: 0.1s ease-out;
+        background-color: rgb(241,243,255);
+    }
+    #confirmpassword:hover{
+      transform: translate(10px);
+      box-shadow: 1px 1px 2px 2px #525685;
+    }
+    .sign{
+        color: color-mix(in srgb, white 90%, gold 10%);
+        text-shadow: 3px 3px 8px gold;
+        color: rgb(9,11,26);
+        font-weight: 900;
+        font-family: cursive;
+    }
+    button{
+        width: 85%;
+        height: 35px;
+        border-radius: 20px;
+        border: none;
+        font-size: 16px;
+        font-family: sans-serif;
+        font-weight: 600;
+        background-color: rgb(9,11,26);
+        color: white;
+        font-weight: 900;
+        font-family: cursive;
+    }
+    .word{
+        font-family: cursive;
+        font-size: 12px;
+        font-weight: 500;
+        color: white;
+        text-shadow: 8px 8px 15px rgb(9,11,26);
+    }
+    #log{
+        color: rgb(9,11,26);
+        font-size: 16px;
+        font-weight: 700;
+        font-family: cursive;
+        text-decoration: none;
+        transition: 0.1s ease;
+
+    }
+    #log:hover{
+        color: white;
+        transform: scale(3px);
+    }
+    
+
+    
+</style>
+<body>
+    <div class="all">
+        <div class="line-1">
+            <div class="sign"><h1>Sign up</h1></div>
+            <input type="text" id="input1" placeholder="Full name">
+            <input type="text" id="input2" placeholder="Email Address">
+            <input type="text" id="password" placeholder="Password">
+            <input type="text" id="confirmpassword" placeholder="Confirm Password">
+
+        </div>
+        <div class="line-2">
+            <button onclick="signUp()">Sign Up</button>
+            <div><h3 class="word">Already have an account ? <a href="" id="log"><span id="log">Log in</span></a></h3></div>
+
+
+        </div>
+
+        
+    </div>
+    
+</body>
+</html>
+<script>
+    let DataBase = []
+   
+    function signUp() {
+         let input1 = document.getElementById('input1').value
+         let input2 = document.getElementById('input2').value
+         let password = document.getElementById('password').value
+         let confirmpassword = document.getElementById('confirmpassword').value
+    
+        if(input1.trim() === ''  || input2.trim() === '' || password.trim() === '' || confirmpassword.trim() === ''){
+            alert('All input must be filled ')
+            return
+        }else if(password != confirmpassword || password.lenght === 6 ){
+            alert('Password does not match. Please try again')
+            return
+
+        }else{
+            alert(' you have successfully Sign up. WELCOME')
+            term.style.color = 'green'
+        }
+        let all = { FullName:input1.value, EmailAddress:input2.value, password:password.value, confirmpassword:confirmpassword.value}
+        DataBase.push(all)
+        console.log(DataBase);
+        
+       
+       
+        
+    } 
+   
+    
+</script>
