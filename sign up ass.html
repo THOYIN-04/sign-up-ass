@@ -19,8 +19,8 @@
         background-repeat: no-repeat;
         background-image: url(https://i1.wp.com/static.web-backgrounds.net/uploads/2012/08/City_Landscape_Background.jpg);
         backdrop-filter: 5px;
-        width: 50%;
-        height: 55vh;
+        width: 45%;
+        height: 60vh;
         margin: 100px auto;
         box-shadow:  1px 1px 3px 3px color-mix(in srgb, #525685 70%, white 30%);
         border-radius: 10px;
@@ -34,7 +34,7 @@
 
     }
     .all:hover{
-        box-shadow: inset 360px 0 0 0  rgb(9,11,26);
+        box-shadow: inset 350px 0 0 0  rgb(9,11,26);
 
          
     }
@@ -43,9 +43,6 @@
         margin-top: 45px;
     }
     .line-2{
-        height: 30vh;
-        width: 40%;
-        border: 1px solid black;
         margin-top: 100px;
         text-align: center;
     }
@@ -80,6 +77,46 @@
 
     }
     #input2:hover{
+        transform: translate(10px);
+      box-shadow: 1px 1px 2px 2px #525685;
+      
+      
+    }
+    #input3{
+        width: 98%;
+        height: 35px;
+        margin-top: 12px;
+        border-radius: 20px;
+        border: none;
+        outline: rgb(9,11,26);
+        padding-left: 15px;
+        box-shadow: 2px 2px 2px 1px #525685;
+        transition: 0.1s ease-in-out;
+        background-color: rgb(241,243,255);
+        
+
+    }
+    #input3:hover{
+        transform: translate(10px);
+      box-shadow: 1px 1px 2px 2px #525685;
+      
+      
+    }
+     #input4{
+        width: 98%;
+        height: 35px;
+        margin-top: 12px;
+        border-radius: 20px;
+        border: none;
+        outline: rgb(9,11,26);
+        padding-left: 15px;
+        box-shadow: 2px 2px 2px 1px #525685;
+        transition: 0.1s ease-in-out;
+        background-color: rgb(241,243,255);
+        
+
+    }
+    #input4:hover{
         transform: translate(10px);
       box-shadow: 1px 1px 2px 2px #525685;
       
@@ -158,6 +195,10 @@
         color: white;
         transform: scale(3px);
     }
+    #check{
+        display: flex;
+        
+    }
     
 
     
@@ -166,7 +207,9 @@
     <div class="all">
         <div class="line-1">
             <div class="sign"><h1>Sign up</h1></div>
-            <input type="text" id="input1" placeholder="Full name">
+            <input type="text" id="input1" placeholder="First name">
+            <input type="text" id="input3" placeholder="Second Name">
+            <input type="text" id="input4" placeholder="User name">
             <input type="text" id="input2" placeholder="Email Address">
             <input type="text" id="password" placeholder="Password">
             <input type="text" id="confirmpassword" placeholder="Confirm Password">
@@ -175,7 +218,7 @@
         <div class="line-2">
             <button onclick="signUp()">Sign Up</button>
             <div><h3 class="word">Already have an account ? <a href="" id="log"><span id="log">Log in</span></a></h3></div>
-
+            <div id="check"> <input type="checkbox" name="Term" id="agree"><p id="Terms">Agree to the terms and condition</p></div>
 
         </div>
 
@@ -188,26 +231,35 @@
     let DataBase = []
    
     function signUp() {
-         let input1 = document.getElementById('input1').value
-         let input2 = document.getElementById('input2').value
-         let password = document.getElementById('password').value
-         let confirmpassword = document.getElementById('confirmpassword').value
-    
-        if(input1.trim() === ''  || input2.trim() === '' || password.trim() === '' || confirmpassword.trim() === ''){
+        let input1 = document.getElementById('input1').value
+        let input2 = document.getElementById('input2').value
+        let input3 = document.getElementById('input3').value
+        let input4 = document.getElementById('input4').value
+        let password = document.getElementById('password').value
+        let confirmpassword = document.getElementById('confirmpassword').value
+        let checkBox = document.getElementById('agree').checked
+        letterm = document.getElementById('Terms')
+
+
+        if(input1.trim() === ''  || input2.trim() === '' ||input3.trim() === '' || input4.trim() === '' || password.trim() === '' || confirmpassword.trim() === ''){
             alert('All input must be filled ')
             return
         }else if(password != confirmpassword || password.lenght === 6 ){
             alert('Password does not match. Please try again')
             return
 
-        }else{
-            alert(' you have successfully Sign up. WELCOME')
-            term.style.color = 'green'
-        }
-        let all = { FullName:input1.value, EmailAddress:input2.value, password:password.value, confirmpassword:confirmpassword.value}
-        DataBase.push(all)
-        console.log(DataBase);
+        }else if(checkBox === false){
+            alert('Please kindly agree to our Terms and Condition before proceding')
         
+        }else{
+            alert('You have successfully Sign up')
+        }
+        let allInfo = {Firstname:input1, Secondname:input2, EmailAdress:input3, username:input4, password:password}
+        DataBase.push(allInfo)
+        allInfo = JSON.stringify()
+        localStorage.setItem('session', DataBase)
+        console.log(DataBase);
+         
        
        
         
